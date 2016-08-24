@@ -29,7 +29,7 @@ public class EggBehave : MonoBehaviour {
 	
 	// Update
 	void Update () {
-
+        Debug.Log(GameManager.health);
         HealthBar.fillAmount = GameManager.health / 100;
 
 

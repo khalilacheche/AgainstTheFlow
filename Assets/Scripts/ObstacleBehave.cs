@@ -32,5 +32,15 @@ public class ObstacleBehave : MonoBehaviour {
 			Destroy (gameObject);
 		}
 	}
+
+    void OnCollisionEnter2D (Collision2D col)
+    {
+        if(col.gameObject.tag =="Player")
+        {
+            GameManager.health = 0f;
+
+        }
+
+    }
 }
 

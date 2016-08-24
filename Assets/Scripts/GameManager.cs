@@ -56,7 +56,6 @@ public class GameManager : MonoBehaviour {
 		if (score > 100) {canCreatures = true;canCreateAlgae=true;}
 		ChooseWorld ();
 		changeBackgroundColor ();
-		
 		///////
 		if (Input.GetKey (KeyCode.Space)||Input.touchCount > 0){Time.timeScale = 1;}
 		//////
@@ -103,13 +102,8 @@ public class GameManager : MonoBehaviour {
 		if(World==1){newColor = World1;}
 		if(World==2){newColor = World2;}
 		if(World==3){newColor = World3;}
-
 	}
-	void slowDown(){
-		if (SlowDown) {
-
-		}
-	}
+	
 
     public void Replay() {
 

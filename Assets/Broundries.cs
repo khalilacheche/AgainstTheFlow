@@ -11,7 +11,7 @@ public class Broundries : MonoBehaviour {
     void OnCollisionEnter2D(Collision2D coll)
     {
 
-        GameManager.health = 0f;
+        //GameManager.health = 0f;
     }
 
 

@@ -28,6 +28,7 @@ public class PillBehave : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D trig){
 		if (trig.gameObject.tag=="Player"){
 			Destroy (gameObject);
+            GameManager.health += 20;
 		}
 		if (trig.gameObject.tag=="Destroyer"){
 			Destroy (gameObject);
