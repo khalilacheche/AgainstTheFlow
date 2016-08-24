@@ -73,7 +73,7 @@ public class GameManager : MonoBehaviour {
 
             Time.timeScale = 0;
 			if (ClickedReplayButton|| Input.touchCount > 0) {
-				SceneManager.LoadScene("SpermoPlay");
+				SceneManager.LoadScene("Game");
 			}
 
 

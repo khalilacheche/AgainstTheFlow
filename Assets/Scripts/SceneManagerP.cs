@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class SceneManagerP : MonoBehaviour {
 	public GameObject[] UI;
@@ -16,6 +17,7 @@ public class SceneManagerP : MonoBehaviour {
     public Rigidbody2D PlayerRigid;
     public float translationSpeedx;
     public float translationSpeedy;
+    
 
 
     [SerializeField]
@@ -38,7 +40,7 @@ public class SceneManagerP : MonoBehaviour {
         PlayerRigid = Player.GetComponent<Rigidbody2D>();
         if (fadera.GetComponent<SpriteRenderer>().color.a == 1)
         {
-            SceneManager.LoadScene("SpermoPlay");
+            SceneManager.LoadScene("Game");
         }
         if (ClickedStartButton == true) {
             if (GetTheFishBack.fadeBool == true)
@@ -53,6 +55,7 @@ public class SceneManagerP : MonoBehaviour {
                 
             }
             
+
 
 
             //Translation buttons
@@ -76,11 +79,11 @@ public class SceneManagerP : MonoBehaviour {
            
 
 
-            //naarach hedhi chniya
+        
             Player.GetComponent<Animator> ().enabled = false;
             //
 
-            //Desables  waves animations when start button is clicked
+            
             WaveOne.GetComponent<Animator>().enabled = false;
             WaveTwo.GetComponent<Animator>().enabled = false;
             //
@@ -97,16 +100,34 @@ public class SceneManagerP : MonoBehaviour {
 
         //Translation to the options menu
 		if (ClickedOptionsButton == true) {
-			for (int i = 0; i < UI.Length; i++) {
-				UI [i].transform.Translate (18f, 0f, 0f);
-			}
-			if (MainCam.transform.position.y <= 9.91f) {
-				MainCam.transform.Translate (0f, 0.1f, 0f);
-			}
-		}
+            //Play Button translation
+            if (UI[0].GetComponent<RectTransform>().anchoredPosition.x <= 224)
+            {
+                UI[0].transform.Translate(0.2f, 0f, 0f);
+            } else
+            {
+                ClickedOptionsButton = false;
+            }
+
+            //Options Button translation 
+            if(UI[1].GetComponent<RectTransform>().anchoredPosition.x >= - 224f)
+            {
+                UI[1].transform.Translate(-0.2f, 0f, 0f);
+              
+            } else
+            {
+                ClickedOptionsButton = false;
+
+            }
+
+            //Rotate The options menu
+            UI[9].transform.Rotate(90f, 0f, 0f );
+
+
+        }
         //
 
-        //dunno what this is
+      
 		if (finishedRotating) {
 
 			if (Player.transform.position.y >= -9.26) {
