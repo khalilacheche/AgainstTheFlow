@@ -15,14 +15,7 @@ public class MalusBehavus : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		MalusRigidBody.velocity =new Vector2(MalusRigidBody.velocity.x, -GameManager.gameSpeed) ;
-		if (gameObject.GetComponent<Renderer> ().isVisible)
-		{
-		}
-		else 
-		{
-			//Destroy (gameObject);
-		}
+		MalusRigidBody.velocity =new Vector2(MalusRigidBody.velocity.x, -GameManager.gameSpeed/2) ;
 	}
 	void OnTriggerEnter2D(Collider2D trig){
 		if (trig.gameObject.tag=="Player"){
