@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour {
 	static public float gameSpeed;
@@ -18,10 +19,10 @@ public class GameManager : MonoBehaviour {
 	private float lastDamage;
 	public GameObject background;
 	public SpriteRenderer backgroundRenderer;
+    public Text HighScore;
     	public bool ClickedReplayButton;
     	public bool ClickedHomeButton;
 	public GameObject GameOver;
-    	public GameObject GameOverBoxes;
 
 
     // Use this for initialization
@@ -43,39 +44,58 @@ public class GameManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	/////////////////Health Clamping
-		health=Mathf.Clamp(health,0,150);
+
+        /////////////////Health Clamping
+        health = Mathf.Clamp(health,0,150);
 	/////////////////Choosing to create Bonuses and Maluses
 		if (score > 100) {canCreatures = true;canCreateAlgae=true;}
 		////////////////Invoking functions
 		ChooseWorld ();
 	///////////Playing Game after first press
 		if (Input.GetKey (KeyCode.Space)||Input.touchCount > 0){Time.timeScale = 1;}
-	///////////
-		gameSpeed=Mathf.Clamp(2*reference*Time.timeSinceLevelLoad,3,9.5f);
+
+        ///////////
+        gameSpeed = Mathf.Clamp(2*reference*Time.timeSinceLevelLoad,3,9.5f);
 	////////////Damaging
 		if(Time.time-lastDamage>damageTime){
 			health -= 1f;
 			lastDamage = Time.time;
 		}
 
+        //GameOver 
 		if (health == 0) {
-            		GameOver.SetActive(true);
-            		GameOverBoxes.SetActive(true);
-        		 Time.timeScale = 0;
-			if (ClickedReplayButton|| Input.touchCount > 0) {
-				SceneManager.LoadScene("Game");
-			}
-            		if (ClickedHomeButton) {
-                		SceneManager.LoadScene("StartScreen");
-            		}
-		} else {
-            		GameOver.SetActive(false);
+            //Displaying GameOver UI
+            GameOver.SetActive(true);
+            //
+            //Saving High Score 
+            if (PlayerPrefs.GetFloat("HighScore") < score)
+            {
+                PlayerPrefs.SetFloat("HighScore", score);
+            }
+            if (HighScore != null)
+            {
+                HighScore.text = "Highscore : " + PlayerPrefs.GetFloat("HighScore").ToString();
+            }
+
+        }
+        else {
+            		
 			score=Time.timeSinceLevelLoad *gameSpeed/5;
 			score=Mathf.Round(score);
 		}
 
-	}
+        
+
+        if (ClickedReplayButton || Input.touchCount > 0)
+        {
+            SceneManager.LoadScene("Game");
+        }
+        if (ClickedHomeButton)
+        {
+            SceneManager.LoadScene("StartScreen");
+        }
+
+    }
 	void ChooseWorld(){
 		if (score-lastScore==25){
 			do {
