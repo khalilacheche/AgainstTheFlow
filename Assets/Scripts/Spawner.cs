@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
 
 public class Spawner : MonoBehaviour {
@@ -26,20 +27,17 @@ public class Spawner : MonoBehaviour {
 	public GameObject Creat1;
 	public GameObject Creat2;
 	public GameObject Creat3;
-    public GameObject InstantiatedFuelCan;
-    public LayerMask Obstacles;
+    public List<GameObject> InstantiatedFuelCans = new List<GameObject>();
     float FuelXPos;
     public List <GameObject> Creatures;
 	public List <GameObject> World1;
 	public List <GameObject> World2;
 	public List <GameObject> World3;
 	// Use this for initialization
+   
 	void Start () {
-        if (InstantiatedFuelCan != null)
-        {
-            FuelXPos = InstantiatedFuelCan.transform.position.x;
-        }
-		GameManager.difficulty = 0.75f;
+        
+        GameManager.difficulty = 0.75f;
 		InvokeRepeating ("spawnPill",Random.Range(5,8),3);
 		InvokeRepeating ("spawnAlgae",Random.Range(10,20),10);
 		InvokeRepeating ("spawnObstacle", 1f, 1f);
@@ -68,26 +66,18 @@ public class Spawner : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	}
+       
+    }
 	void spawnPill(){
-		InstantiatedFuelCan = Instantiate (Pill, new Vector2(Random.Range(xLeft+0.5f,xRight-0.5f),10),Quaternion.identity) as GameObject;
-        if(Physics2D.OverlapCircle(InstantiatedFuelCan.transform.position,1f,Obstacles))
-        {
-            Debug.Log("there is a collision between Fuel Can and Obstalce ");
-           if(FuelXPos < 0)
-           {
-               FuelXPos = 0f;
-           } else
-           {
-               FuelXPos = 0f;
 
-           }
-
-        }
-	}
+        InstantiatedFuelCans.Add(Instantiate(Pill, new Vector2(Random.Range(xLeft + 0.5f, xRight - 0.5f), 10), Quaternion.identity) as GameObject);
+        
+    }
 
     void getFuelCanPos () { 
 }
+
+     
 	void spawnObstacle(){
 		Boolean= (Random.value > 0.5f);
 		if (canCreate) {

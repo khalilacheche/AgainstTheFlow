@@ -101,27 +101,27 @@ public class SceneManagerP : MonoBehaviour {
         //Translation to the options menu
 		if (ClickedOptionsButton == true) {
             //Play Button translation
-            if (UI[0].GetComponent<RectTransform>().anchoredPosition.x <= 224)
-            {
-                UI[0].transform.Translate(0.2f, 0f, 0f);
-            } else
-            {
-                ClickedOptionsButton = false;
-            }
+            //if (UI[0].GetComponent<RectTransform>().anchoredPosition.x <= 224)
+            //{
+                UI[0].transform.Translate(25f, 0f, 0f);
+            //} else
+            //{
+                //ClickedOptionsButton = false;
+            //}
 
             //Options Button translation 
-            if(UI[1].GetComponent<RectTransform>().anchoredPosition.x >= - 224f)
-            {
-                UI[1].transform.Translate(-0.2f, 0f, 0f);
+            //if(UI[1].GetComponent<RectTransform>().anchoredPosition.x >= - 224f)
+            //{
+                UI[1].transform.Translate(-25f, 0f, 0f);
               
-            } else
-            {
-                ClickedOptionsButton = false;
+            //} else
+            //{
+            //    ClickedOptionsButton = false;
 
-            }
+            //}
 
             //Rotate The options menu
-            UI[9].transform.Rotate(90f, 0f, 0f );
+            //UI[9].transform.Rotate(90f, 0f, 0f );
 
 
         }

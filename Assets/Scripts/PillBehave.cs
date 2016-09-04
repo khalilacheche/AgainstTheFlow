@@ -36,8 +36,11 @@ public class PillBehave : MonoBehaviour {
 
 	}
 	void OnTriggerStay2D(Collider2D stay){
-		if (stay.gameObject.tag == "Obstacle") {
-			gameObject.transform.Translate(new Vector2(0,2));
+		if (stay.gameObject.layer == LayerMask.NameToLayer("Obstacle"))
+        {
+            Debug.Log("hey");
+
+            gameObject.transform.position = new Vector2(0, gameObject.transform.position.y); 
 		}
 
 	}
