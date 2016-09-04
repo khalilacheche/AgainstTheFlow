@@ -3,7 +3,7 @@ using System.Collections;
 
 public class GetTheFishBack : MonoBehaviour {
     // Use this for initialization
-
+    GameObject fish;
 	void Start () {
 	
 
@@ -20,7 +20,9 @@ public class GetTheFishBack : MonoBehaviour {
         {
             if (Col.gameObject.tag == "Fishs")
             {
-                Col.gameObject.transform.position = new Vector3(-4.71f, Random.Range(-3f, -5f), 0f);
+                fish = Col.gameObject;
+                Col.gameObject.transform.position = new Vector3(-4.71f, Random.Range(-4f, 5), 0f);
+
             }
             if (Col.gameObject.tag == "Submarine")
             {
