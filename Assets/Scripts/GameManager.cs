@@ -20,8 +20,8 @@ public class GameManager : MonoBehaviour {
 	public GameObject background;
 	public SpriteRenderer backgroundRenderer;
     public Text HighScore;
-    	public bool ClickedReplayButton;
-    	public bool ClickedHomeButton;
+    public bool ClickedReplayButton;
+	public bool ClickedHomeButton;
 	public GameObject GameOver;
 
 
@@ -97,7 +97,7 @@ public class GameManager : MonoBehaviour {
 
     }
 	void ChooseWorld(){
-		if (score-lastScore==25){
+		if (score-lastScore==5){
 			do {
 			World=Random.Range(1,4);
 			}while(World==lastWorld);

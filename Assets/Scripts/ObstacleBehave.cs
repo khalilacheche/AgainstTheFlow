@@ -2,32 +2,21 @@
 using System.Collections;
 
 public class ObstacleBehave : MonoBehaviour {
-	public Rigidbody2D WallRigidBody;
+	public Rigidbody2D ObstacleRigidBody;
 //	public  Transform cameraPosition;
 	// Use this for initialization
 	void Start () {
-		WallRigidBody = GetComponent<Rigidbody2D> ();
+		ObstacleRigidBody = GetComponent<Rigidbody2D> ();
 		GameManager.gameSpeed=5f;
 
 	}
 
 	// Update is called once per frame
 	void Update () {
-		WallRigidBody.velocity =new Vector2(WallRigidBody.velocity.x, -GameManager.gameSpeed) ;
-//		if(cameraPosition.transform.position.y > gameObject.transform.position.y){
-			/*if (gameObject.GetComponent<Renderer> ().isVisible)
-			{
-			}
-			else 
-			{
-				Destroy (gameObject);
-			}
-		*/}
-	//}
-	void OnTriggerEnter2D(Collider2D trig){
-		if (trig.gameObject.tag=="yPosVerifier"){
-			Spawner.canCreate=true;
+		ObstacleRigidBody.velocity =new Vector2(ObstacleRigidBody.velocity.x, -GameManager.gameSpeed) ;
 		}
+
+	void OnTriggerEnter2D(Collider2D trig){
 		if (trig.gameObject.tag=="Destroyer"){
 			Destroy (gameObject);
 		}
